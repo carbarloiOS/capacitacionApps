@@ -13,6 +13,7 @@
 #import "Category.h"
 #import "NewsViewController.h"
 #import "Dog.h"
+#import "RealmManager.h"
 
 
 @interface CategoryViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -25,9 +26,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tableView registerCustomCellWithName:[CategoryTableViewCell getClassName]];
-    [self initializeCategoryArray];
+    //[self initializeCategoryArray];
+    self.categoryArray = [RealmManager getAllDogs];
 }
-
+/*
 -(void)initializeCategoryArray{
     Dog *d1 = [[Dog alloc] initWithName:@"Akon" image:@"akon" color:@"NegroGris" location:@"Alajuela" age:@"6 meses" contactInformation:@"akon@dogs.com" ];
     Dog *d2 = [[Dog alloc] initWithName:@"Berk" image:@"berk" color:@"Negro Carbon" location:@"Heredia" age:@"6 meses" contactInformation:@"berk@dogs.com" ];
@@ -39,7 +41,7 @@
 //    Category *fourthCategory = [[Category alloc] initWithName:@"Econonomía" imageName:@"economy"];
     self.categoryArray = [[NSMutableArray alloc] initWithObjects:d1, d2,d3,d4,nil];
     
-}
+} */
 
 
 #pragma mark - TABLE VIEW DELEGATE

@@ -12,9 +12,11 @@
 #import "NewsTableViewCell.h"
 #import "UITableView+RegisterCustomCell.h"
 #import "UITableViewCell+GetClassName.h"
+#import "RealmManager.h"
 #import "Dog.h"
 
 @interface NewsViewController ()<UITableViewDelegate, UITableViewDataSource>
+@property (nonatomic,strong) NSMutableArray *dogArray;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -26,6 +28,7 @@
     self.title = self.dogSelected.name;
     //[self addNewsButton];
     [self.tableView registerCustomCellWithName:[NewsTableViewCell getClassName]];
+    self.dogArray = [RealmManager getAllDogs];
 }
 
 -(void)viewWillAppear:(BOOL)animated{

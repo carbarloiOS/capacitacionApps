@@ -18,7 +18,7 @@
 @end
 
 @implementation NewsDetailTableViewController
-
+/*
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addSaveButtonToNavigationController];
@@ -33,7 +33,7 @@
 -(void)saveNews{
     News *news = [[News alloc] initWithDate:[NSDate date] title:self.newsTitleTextField.text newsDescription:self.newsDescriptionTextView.text];
 //    [self.categorySelected.newsArray addObject:news];
-    [self.dogSelected.dogsArray addObject:news];
+    //[self.dogSelected.dogsArray addObject:news];
     [self.navigationController popViewControllerAnimated:true];
 }
 
@@ -46,5 +46,5 @@
 - (IBAction)dismissKeyboard:(id)sender {
     [self.view endEditing:YES];
 }
-
+*/
 @end
