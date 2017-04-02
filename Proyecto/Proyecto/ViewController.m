@@ -10,6 +10,8 @@
 #import "AFNetworking.h"
 #import "Constantes.h"
 #import "webviewCNFLViewController.h"
+// Para las esperas
+#import "UIView+RNActivityView.h"
 
 
 @implementation ViewController
@@ -88,11 +90,14 @@
         token,     @"param4",
         nil];
 
+    // Mostrar algo de actividad mientras se espera
+    [self.view showActivityViewWithLabel:@"Cargando datos..."];
     [self getAsync2JSONConDiccio:URL_LOGIN WithDictionary:dictionary
                  andCompletionHandler:^(NSDictionary *result)
      {
          NSLog(@"Resultado: %@", result);
-         // El ws retorna valores
+         // El ws retorna valores, quitar la espera
+         [self.view hideActivityViewWithAfterDelay:2];
          if(result.count > 0)
          {
              NSString *lg = result[@"lg"];
@@ -201,8 +206,14 @@ Resultado: Genera la accion de pulsar boton deIngresar
  */
 
 - (IBAction)btnCharles:(UIButton *)sender {
+    
+    // ***** Usuario: johobapi
+    // ***** Clave:   yasuko79
 
+    // Llamando web services y web view
     [self validaLogin];
+    // Esconder teclado
+    [self.view endEditing:YES];
     
 //        webviewCNFLViewController *nextViewController = [self.storyboard  instantiateViewControllerWithIdentifier:@"webviewCNFLViewController"];
 //    

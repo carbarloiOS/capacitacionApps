@@ -7,6 +7,8 @@
 //
 
 #import "webviewCNFLViewController.h"
+// Para las esperas
+#import "UIView+RNActivityView.h"
 
 @interface webviewCNFLViewController ()
 
@@ -17,11 +19,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.lclientedatos.text = self.nombreCliente;
+    // Mostrar algo de actividad mientras se espera
+    [self.view showActivityViewWithLabel:@"Cargando datos..."];
     // Do any additional setup after loading the view.
     NSString *fullURL =@"https://agenciavirtual.cnfl.go.cr/cnflPruebas/AgenciaVirtual/HFProto.jsf";
     NSURL *url = [NSURL URLWithString:fullURL];
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
     [_WVcnfl loadRequest:requestObj];
+    // El ws retorna valores, quitar la espera
+    [self.view hideActivityViewWithAfterDelay:2];
     self.title = @"Histórico del Cliente";
 }
 
